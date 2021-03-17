@@ -1,25 +1,27 @@
 import React, {useState} from "react";
 import {Api} from "../api/Api";
+import WeatherShowComponent from "./WeatherShowComponent";
 
 const WeatherSearchComponent = () => {
 
-
     const [city, setCity] = useState('');
-    const [weather, setWeather] = useState();
+    const [weather, setWeather] = useState(null);
+    const [error, setError] = useState(null);
 
     const handleChange = (e) => {
         setCity(e.target.value)
     }
 
     const handleSubmit = (e) => {
-
         e.preventDefault();
         Api.fetch(city)
             .then(res => {
                     if (res.cod === 200) {
-                        console.log(res)
                         setWeather(res)
-                    }
+                    } else if (res.cod === '404') {
+                        setWeather(null)
+                        setError(res.message)
+                }
                 }
             )
     }
@@ -51,28 +53,10 @@ const WeatherSearchComponent = () => {
                     </form>
                 </div>
                 <div className="col-sm">
-                    <h2 className="display-2 text-center mt-4">
-                        {weather
-                            ? (<>
-                                    <div className="container">
-                                        <div className="row">
-                                            <div className="col-sm">
-                                                <p className="display-3">{weather.name}</p>
-                                                <p className="display-5">{weather.main.temp}<sup>o</sup>C</p>
-                                            </div>
-                                            <div className="col-sm d-flex justify-content-center">
-                                                <img src="http://openweathermap.org/img/wn/10d@2x.png"
-                                                     className="rounded mx-auto d-block"
-                                                     alt="image here"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </>
-                            )
-                            : (<div className="">
-                                <p className="">No weather!</p>
-                            </div>)}
-                    </h2>
+                    {weather
+                        ? <WeatherShowComponent weather={weather}/>
+                        : <p className="display-5 text-center">{error}</p>
+                    }
                 </div>
             </div>
         </div>
