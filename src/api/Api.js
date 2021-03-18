@@ -4,7 +4,6 @@ export const Api = {
     async fetch(query) {
         const api_url = await
             fetch(`http://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&appid=${API_KEY}`);
-        const data = await api_url.json();
-        return data
+        return await api_url.json()
     }
 }

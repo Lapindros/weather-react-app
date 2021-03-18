@@ -4,10 +4,12 @@ import {RoutesComponent} from "./components/RoutesComponent";
 
 export const App = () => {
     return (
-        <div className="container-fluid">
+        <>
             <NavBar/>
+        <div className="container-fluid">
             <RoutesComponent/>
         </div>
+        </>
     );
 };
 
