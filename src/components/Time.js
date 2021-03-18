@@ -13,7 +13,6 @@ const Time = () => {
         }
     }, []);
 
-
     return (
         <h2 className="display-2 text-center mt-4">
             {currentTime}

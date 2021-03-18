@@ -13,7 +13,7 @@ const ShowWeather= ({weather}) => {
                     <div className="col-sm d-flex justify-content-center align-items-center">
                         <img
                             src={iconPath}
-                            className="rounded mx-auto d-block"
+                            className="rounded d-block"
                             alt="image here"/>
                     </div>
                 </div>
