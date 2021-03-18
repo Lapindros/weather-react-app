@@ -1,15 +1,22 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 
 const Time = () => {
 
-    const getTime = () => {
-        const time = new Date();
-        return time.toLocaleTimeString();
-    }
+    const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString());
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentTime(new Date().toLocaleTimeString());
+        }, 1000);
+        return () => {
+            clearInterval(timer);
+        }
+    }, []);
+
 
     return (
         <h2 className="display-2 text-center mt-4">
-            {getTime()}
+            {currentTime}
         </h2>
     )
 }

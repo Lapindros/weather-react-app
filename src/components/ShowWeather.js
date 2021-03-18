@@ -1,6 +1,6 @@
 import React from "react";
 
-const WeatherShowComponent = ({weather}) => {
+const ShowWeather= ({weather}) => {
     const iconPath = `http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`
 
     return (
@@ -10,7 +10,7 @@ const WeatherShowComponent = ({weather}) => {
                             <p className="display-3 text-center">{weather.name}</p>
                             <p className="display-5 text-center">{weather.main.temp}<sup>o</sup>C</p>
                     </div>
-                    <div className="col-sm">
+                    <div className="col-sm d-flex justify-content-center align-items-center">
                         <img
                             src={iconPath}
                             className="rounded mx-auto d-block"
@@ -21,4 +21,4 @@ const WeatherShowComponent = ({weather}) => {
     )
 }
 
-export default WeatherShowComponent;
+export default ShowWeather;

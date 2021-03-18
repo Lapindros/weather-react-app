@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Api} from "../api/Api";
-import WeatherShowComponent from "./WeatherShowComponent";
+import ShowWeather from "./ShowWeather";
 import FormSearch from "./FormSearch";
 
 const SearchWeatherComponent = () => {
@@ -39,7 +39,7 @@ const SearchWeatherComponent = () => {
                 </div>
                 <div className="col-sm d-flex justify-content-center align-items-center">
                     {weather
-                        ? <WeatherShowComponent weather={weather}/>
+                        ? <ShowWeather weather={weather}/>
                         : <p className="display-5 text-center">{error}</p>
                     }
                 </div>

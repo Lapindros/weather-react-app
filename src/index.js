@@ -8,4 +8,3 @@ ReactDOM.render(
         <App/>
     </Router>,
     document.getElementById('root'));
-
